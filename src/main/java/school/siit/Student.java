@@ -31,7 +31,7 @@ public class Student {
         {throw new IllegalArgumentException("Date of birth between 1900 and current year - 18 "); }
 
 
-        if ((!gender.toLowerCase().equals("male")) && (!gender.toLowerCase().equals("female")) || (!gender.toLowerCase().equals("m")) && (!gender.toLowerCase().equals("f"))) {
+        if ((!gender.toLowerCase().equals("male")) && (!gender.toLowerCase().equals("female"))) {
             throw new IllegalArgumentException("The gender should be male(m) or female(f)");
         } else this.gender = gender;
 

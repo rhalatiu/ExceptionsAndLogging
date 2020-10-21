@@ -1,5 +1,6 @@
 package school.siit;
 
+import java.time.Year;
 import java.util.Scanner;
 
 public class Student {
@@ -21,6 +22,13 @@ public class Student {
             this.lastName = lastName;
         }else throw new IllegalArgumentException("Last name should not be empty");
 
+        try {
+            int year = Year.now().getValue();
+            int dateOfBirthInt = Integer.parseInt(dateOfBirth);
+            if (dateOfBirthInt >= 1900 && dateOfBirthInt <= year - 18)
+                this.dateOfBirth = dateOfBirth;
+        }catch (Exception ex)
+        {throw new IllegalArgumentException("Date of birth between 1900 and current year - 18 "); }
 
 
         if ((!gender.toLowerCase().equals("male")) && (!gender.toLowerCase().equals("female")) || (!gender.toLowerCase().equals("m")) && (!gender.toLowerCase().equals("f"))) {

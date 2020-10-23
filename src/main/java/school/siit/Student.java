@@ -22,16 +22,15 @@ public class Student {
         } else throw new IllegalArgumentException("Last name should not be empty");
 
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
-        LocalDate startLocalDate = LocalDate.of(1900,01,01);
         LocalDate now = LocalDate.now();
-        if ((Period.between(startLocalDate, this.dateOfBirth).getYears() > 120) || Period.between(this.dateOfBirth, now).getYears() < 18){
+        if ((Period.between(this.dateOfBirth, now).getYears() > 120) || Period.between(this.dateOfBirth, now).getYears() < 18){
             throw new IllegalArgumentException("The age is less than 18 and grater than 120 years old");}
 
 
-
-        if ((!gender.toLowerCase().equals("male")) && (!gender.toLowerCase().equals("female"))) {
-            throw new IllegalArgumentException("The gender should be male(m) or female(f)");
-        } else this.gender = gender;
+        if (!gender.toLowerCase().equals("male") && !gender.toLowerCase().equals("female")) {
+            throw new IllegalArgumentException("The gender should be male or female");
+        }
+        else this.gender = gender;
 
         this.ID = ID;
         }
@@ -57,22 +56,14 @@ public class Student {
             return ID;
         }
 
-    /*public void addStudent() throws Exception{
-        Scanner firstNameScanner = new Scanner(System.in);
-        System.out.println("Add the student's first name");
-        try {
-            String firstNameValue = firstNameScanner.nextLine();
-            System.out.println(firstNameValue);
-        }catch (Exception e){
-        System.out.println("No correct value");}
-
-        Scanner lastNameScanner = new Scanner(System.in);
-        System.out.println("Add the student's last name");
-        try{
-            String lastNameValue = lastNameScanner.nextLine();
-            System.out.println(lastNameValue);
-        }catch (Exception e){
-            System.out.println("Incorrect value added");
-        }
-    }*/
+    @Override
+    public String toString() {
+        return "Student{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", gender='" + gender + '\'' +
+                ", ID='" + ID + '\'' +
+                '}';
+    }
 }

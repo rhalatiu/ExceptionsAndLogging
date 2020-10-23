@@ -1,6 +1,7 @@
 package school.siit;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.*;
 
 public class StudentRepository {
@@ -26,11 +27,14 @@ public class StudentRepository {
         ArrayList<Student> studentsAgeOrder = new ArrayList<>();
         LocalDate today = LocalDate.now();
         int newAge = Integer.parseInt(age);
-
         try {
-        if (newAge < 0)
-            throw new IllegalArgumentException("The age is negative");
-
+        if (newAge < 0){
+            throw new IllegalArgumentException("The age is negative");}
+        for (Student studentAge : studentHashSet){
+            if (newAge == Period.between(studentAge.getDateOfBirth(), today).getYears()){
+                studentsAgeOrder.add(studentAge);
+            }
+        }
         }catch (NumberFormatException e) {
             throw new NumberFormatException("The age is not a number");
         }
@@ -38,7 +42,7 @@ public class StudentRepository {
     }
 
     public List<Student> orderStudents(List<Student> list){
-        ArrayList<Student> studentsOrder = new ArrayList<>(studentHashSet);
+        List<Student> studentsOrder = new ArrayList<>(studentHashSet);
         Collections.sort(studentsOrder, new LastNameComparator());
         Collections.sort(studentsOrder, new BirthDateComparator());
         return studentsOrder;

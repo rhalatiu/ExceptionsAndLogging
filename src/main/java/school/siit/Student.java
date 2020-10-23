@@ -1,34 +1,32 @@
 package school.siit;
 
-import java.time.Year;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Student {
     private String firstName;
     private String lastName;
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
     private String gender;
     private String ID;
 
     public Student(String firstName, String lastName, String dateOfBirth, String gender, String ID) {
-        this.dateOfBirth = dateOfBirth;
 
         if (!firstName.equals("")) {
             this.firstName = firstName;
-        }else throw new IllegalArgumentException("First name should not be empty");
+        } else throw new IllegalArgumentException("First name should not be empty");
 
 
         if (!lastName.equals("")) {
             this.lastName = lastName;
-        }else throw new IllegalArgumentException("Last name should not be empty");
+        } else throw new IllegalArgumentException("Last name should not be empty");
 
-        try {
-            int year = Year.now().getValue();
-            int dateOfBirthInt = Integer.parseInt(dateOfBirth);
-            if (dateOfBirthInt >= 1900 && dateOfBirthInt <= year - 18)
-                this.dateOfBirth = dateOfBirth;
-        }catch (Exception ex)
-        {throw new IllegalArgumentException("Date of birth between 1900 and current year - 18 "); }
+        this.dateOfBirth = LocalDate.parse(dateOfBirth);
+        LocalDate startLocalDate = LocalDate.of(1900,01,01);
+        LocalDate now = LocalDate.now();
+        if ((Period.between(startLocalDate, this.dateOfBirth).getYears() > 120) || Period.between(this.dateOfBirth, now).getYears() < 18){
+            throw new IllegalArgumentException("The age is less than 18 and grater than 120 years old");}
+
 
 
         if ((!gender.toLowerCase().equals("male")) && (!gender.toLowerCase().equals("female"))) {
@@ -36,27 +34,28 @@ public class Student {
         } else this.gender = gender;
 
         this.ID = ID;
-    }
+        }
 
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
+        public String getFirstName () {
+            return firstName;
+        }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
+        public String getLastName () {
+            return lastName;
+        }
 
-    public String getGender() {
-        return gender;
-    }
+        public LocalDate getDateOfBirth () {
+            return dateOfBirth;
+        }
 
-    public String getID() {
-        return ID;
-    }
+        public String getGender () {
+            return gender;
+        }
+
+        public String getID () {
+            return ID;
+        }
 
     /*public void addStudent() throws Exception{
         Scanner firstNameScanner = new Scanner(System.in);
@@ -76,5 +75,4 @@ public class Student {
             System.out.println("Incorrect value added");
         }
     }*/
-
 }

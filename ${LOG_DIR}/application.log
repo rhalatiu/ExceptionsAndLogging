@@ -1,9 +1,2 @@
-2020-10-24 21:11:05 ERROR java.lang.NullPointerException: Last name should not be empty
-2020-10-24 21:12:06 ERROR java.lang.IllegalArgumentException: The age is less than 18 or grater than 120 years old
-2020-10-24 21:14:02 ERROR java.lang.NullPointerException: First name should not be empty
-2020-10-24 21:14:32 ERROR java.lang.NullPointerException: First name should not be empty
-2020-10-24 21:14:48 ERROR java.lang.NullPointerException: The ID is empty, student does not exist
-2020-10-24 21:18:21 ERROR java.lang.NullPointerException: First name should not be empty
-2020-10-24 21:20:23 ERROR java.lang.NullPointerException: The ID is empty, student does not exist
-2020-10-24 21:21:19 ERROR java.lang.NullPointerException: The ID is empty, student does not exist
-2020-10-24 21:22:17 ERROR java.lang.NullPointerException: First name should not be empty
+2020-10-24 22:08:30 ERROR java.lang.IllegalArgumentException: The gender should be male(M) or female(F)
+2020-10-24 22:09:43 ERROR java.lang.IllegalArgumentException: The gender should be male(M) or female(F)

@@ -28,10 +28,10 @@ public class Student {
             throw new IllegalArgumentException("The age is less than 18 or grater than 120 years old"); }
 
 
-        if (!gender.toLowerCase().equals("male") && !gender.toLowerCase().equals("female")) {
-            throw new IllegalArgumentException("The gender should be male or female");
-        }
-        else this.gender = gender;
+        if (gender.toLowerCase().equals("male") || gender.toLowerCase().equals("m") || gender.toLowerCase().equals("female") || gender.toLowerCase().equals("f")) {
+            this.gender = gender;
+        }else throw new IllegalArgumentException("The gender should be male(M) or female(F)");
+
 
         this.ID = ID;
         }

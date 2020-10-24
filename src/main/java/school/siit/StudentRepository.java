@@ -12,15 +12,12 @@ public class StudentRepository {
     }
 
     public void deleteStudent(String ID) {
-        try {
+
             for (Student studentID : studentHashSet) {
                 if (studentID.getID().equals(ID)) {
                     studentHashSet.remove(ID);
-                }
+                } else throw new IllegalArgumentException("The ID is empty, student does not exist");
             }
-        }catch (NullPointerException npe){
-            throw new IllegalArgumentException("The ID is empty, student does not exist");
-        }
     }
 
     public List<Student> retrieveStudentsWithCertainAge(String age){
@@ -46,5 +43,18 @@ public class StudentRepository {
         Collections.sort(studentsOrder, new LastNameComparator());
         Collections.sort(studentsOrder, new BirthDateComparator());
         return studentsOrder;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StudentRepository that = (StudentRepository) o;
+        return Objects.equals(studentHashSet, that.studentHashSet);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(studentHashSet);
     }
 }

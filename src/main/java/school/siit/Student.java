@@ -24,7 +24,7 @@ public class Student {
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
         LocalDate now = LocalDate.now();
         if ((Period.between(this.dateOfBirth, now).getYears() > 120) || Period.between(this.dateOfBirth, now).getYears() < 18){
-            throw new IllegalArgumentException("The age is less than 18 and grater than 120 years old");}
+            throw new IllegalArgumentException("The age is less than 18 or grater than 120 years old"); }
 
 
         if (!gender.toLowerCase().equals("male") && !gender.toLowerCase().equals("female")) {

@@ -1,5 +1,6 @@
 package school.siit;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -12,19 +13,19 @@ public class Student {
 
     public Student(String firstName, String lastName, String dateOfBirth, String gender, String ID) {
 
-        if (!firstName.equals("")) {
-            this.firstName = firstName;
-        } else throw new IllegalArgumentException("First name should not be empty");
+        if (firstName.equals("") || firstName.isEmpty()) {
+            throw new NullPointerException("First name should not be empty");
+        } else this.firstName = firstName;
 
 
-        if (!lastName.equals("")) {
-            this.lastName = lastName;
-        } else throw new IllegalArgumentException("Last name should not be empty");
+        if (lastName.equals("") || lastName.isEmpty()) {
+            throw new NullPointerException("Last name should not be empty");
+        } else this.lastName = lastName;
 
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
         LocalDate now = LocalDate.now();
         if ((Period.between(this.dateOfBirth, now).getYears() > 120) || Period.between(this.dateOfBirth, now).getYears() < 18){
-            throw new IllegalArgumentException("The age is less than 18 or grater than 120 years old"); }
+            throw new DateTimeException("The age is less than 18 or grater than 120 years old"); }
 
 
         if (!gender.toLowerCase().equals("male") && !gender.toLowerCase().equals("female")) {

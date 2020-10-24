@@ -16,7 +16,7 @@ public class StudentRepository {
             for (Student studentID : studentHashSet) {
                 if (studentID.getID().equals(ID)) {
                     studentHashSet.remove(ID);
-                } else throw new IllegalArgumentException("The ID is empty, student does not exist");
+                } else throw new NullPointerException("The ID is empty, student does not exist");
             }
     }
 

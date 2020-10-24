@@ -1,2 +1,0 @@
-2020-10-24 20:16:27 ERROR java.lang.IllegalArgumentException: The ID is empty, student does not exist
-2020-10-24 20:29:43 ERROR java.lang.IllegalArgumentException: First name should not be empty

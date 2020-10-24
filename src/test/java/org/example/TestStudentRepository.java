@@ -22,12 +22,12 @@ public class TestStudentRepository {
     @Test
     public void addStudent(){
         try {
-            studentRepo.addStudent(new Student("", "Halatiu", "1992-08-11", "male", "1234"));
+            studentRepo.addStudent(new Student("Radu", "", "1992-08-11", "male", "1234"));
             //studentRepo.addStudent(new Student("Radu","","1992-08-11", "male","1234"));
             //studentRepo.addStudent(new Student("Radu","Halatiu","1899-08-11", "male","1234"));
             //studentRepo.addStudent(new Student("Radu","Halatiu","1992-08-11", "w","1234"));
-        }catch (Exception npe){
-            logger.error(npe);
+        }catch (Exception e){
+            logger.error(e);
         }
     }
 
@@ -42,7 +42,7 @@ public class TestStudentRepository {
 
         try {
             studentRepo.deleteStudent("");
-        }catch (Exception e){
+        }catch (NullPointerException e){
             logger.error(e);
         }
 

@@ -9,9 +9,9 @@ import static org.junit.Assert.*;
 
 public class TestStudentRepository {
     Student student1 = new Student("Radu", "Halatiu","1992-08-11","male","1234");
-    Student student2 = new Student("Simion", "Belbe","1992-04-11","male","1235");
-    Student student3 = new Student("Andrei", "Zaha","1992-05-20","male","1236");
-    Student student4 = new Student("Dan", "Alexandru","1992-04-23","male","1237");
+    Student student2 = new Student("Simion", "Belbe","1989-04-11","male","1235");
+    Student student3 = new Student("Andrei", "Zaha","1944-05-20","male","1236");
+    Student student4 = new Student("Dan", "Alexandru","1968-04-23","male","1237");
     Student student5 = new Student("Ioana", "Badea","1992-10-23","female","1238");
     Student student6 = new Student("Cosmina", "Petria","1992-02-05","female","1239");
 
@@ -48,13 +48,22 @@ public class TestStudentRepository {
 
     }
 
-//    @Test
-//    void retrieveStudentsWithCertainAge(){
-//
-//    }
-//
-//    @Test
-//    void orderStudents(){
-//
-//    }
+    @Test
+    public void retrieveStudentsWithCertainAge(){
+        studentRepo.addStudent(student1);
+        studentRepo.addStudent(student2);
+        studentRepo.addStudent(student3);
+        studentRepo.addStudent(student4);
+        studentRepo.addStudent(student5);
+        studentRepo.addStudent(student6);
+
+        try {
+            assertEquals(studentRepo.retrieveStudentsWithCertainAge("28").size(), 3);
+            assertEquals(studentRepo.retrieveStudentsWithCertainAge("121").size(), 0);
+            assertEquals(studentRepo.retrieveStudentsWithCertainAge("-1").size(), 0);
+        }catch (Exception exception){
+            logger.error(exception);
+        }
+
+    }
 }

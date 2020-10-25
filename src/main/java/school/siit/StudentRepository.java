@@ -21,7 +21,7 @@ public class StudentRepository {
     }
 
     public List<Student> retrieveStudentsWithCertainAge(String age){
-        ArrayList<Student> studentsAgeOrder = new ArrayList<>();
+        List<Student> studentsAgeOrder = new ArrayList<>();
         LocalDate today = LocalDate.now();
         int newAge = Integer.parseInt(age);
         try {
